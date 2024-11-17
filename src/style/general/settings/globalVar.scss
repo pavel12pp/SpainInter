@@ -1,0 +1,21 @@
+:root {
+
+  //Font
+  --primary-fontFamily: "Montserrat", sans-serif;
+  --secondaire-fontFamily: "Inter", sans-serif;
+  --primary-fontWeight: 400;
+  --secondaire-fontWeight: Bold;
+
+  //Color
+  --primary-color: #192E51;
+  --accent-primary-color: #FF2300;
+  --accent-secondaire-color: #607698;
+
+  --primary-textColor: var(--primary-color);
+  --secondaire-textColor: var(--accent-secondaire-color);
+
+  --primary-bgColor: #FFFFFF;
+}
+  
+  
+  
