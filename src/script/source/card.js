@@ -2,6 +2,8 @@ import Swiper from "swiper";
 import {Navigation} from 'swiper/modules';
 
 import './../component/page/card/pseudoLogic.js';
+import './../component/page/card/phoneSelect.js';
+import './../component/page/card/iframeFacade.js';
 
 const profileSlider = new Swiper('.card-profiles-slider', {
   grabCursor: true,  
@@ -34,15 +36,8 @@ const videoSlider = new Swiper('.card-videos-slider', {
   grabCursor: true,  
   loop: true,
   modules: [Navigation],
-  lazy: true, // Включает поддержку ленивой загрузки
   on: {
-    slideChange: function () {
-      const currentSlide = this.slides[this.activeIndex];
-      const iframe = currentSlide.querySelector('iframe[data-src]');
-      if (iframe && !iframe.src) {
-        iframe.src = iframe.getAttribute('data-src');
-      }
-    },
+    // slideChange: function () {}
   },
   navigation: {
     nextEl: '.card-videos-slider-button-next',

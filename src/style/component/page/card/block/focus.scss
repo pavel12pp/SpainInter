@@ -478,10 +478,15 @@ body.video-active {
 }
 .card-focus-phone-field-select {
   display: flex;
+  position: relative;
   align-items: center;
-  gap: 5px;
   margin-right: 5px;
   &__options {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 17px;
+    left: 0px;
   }
 
   &__option {
@@ -498,12 +503,16 @@ body.video-active {
       display: block;
     }
   }
+  &.open .card-focus-phone-field-select__option {
+    display: block;
+  }
 
   &__button {
     display: block;
     width: 11px;
     height: 6px;
     background-color: transparent;
+    margin-left: 31px;
     & > svg {
       display: block;
       width: 100%;
