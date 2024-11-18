@@ -6,6 +6,7 @@ import './../component/page/card/pseudoLogic.js';
 const profileSlider = new Swiper('.card-profiles-slider', {
   grabCursor: true,  
   loop: true,
+  lazy: true,
   modules: [Navigation],
   navigation: {
     nextEl: '.card-profiles-slider-button-next',
@@ -33,6 +34,16 @@ const videoSlider = new Swiper('.card-videos-slider', {
   grabCursor: true,  
   loop: true,
   modules: [Navigation],
+  lazy: true, // Включает поддержку ленивой загрузки
+  on: {
+    slideChange: function () {
+      const currentSlide = this.slides[this.activeIndex];
+      const iframe = currentSlide.querySelector('iframe[data-src]');
+      if (iframe && !iframe.src) {
+        iframe.src = iframe.getAttribute('data-src');
+      }
+    },
+  },
   navigation: {
     nextEl: '.card-videos-slider-button-next',
     prevEl: '.card-videos-slider-button-prev',
@@ -61,5 +72,23 @@ const cardImageVideoSlider = new Swiper('.card-focus-video-slider__container', {
   slidesPerView: 1,
 });
 
+//optimization google maps(загружаем карту на первом слайде только когда мы увидим 10 процентов от его поверхности)
+document.addEventListener('DOMContentLoaded', function () {
+  const iframe = document.querySelector('.card-map iframe');
 
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!iframe.src) {
+          iframe.src = iframe.getAttribute('data-src');
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '0px',
+    threshold: 0.1
+  });
 
+  observer.observe(iframe);
+});
