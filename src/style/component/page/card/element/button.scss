@@ -1,0 +1,19 @@
+.card-button {
+  display: flex;
+  height: 72px;
+  aspect-ratio: 1/1;
+  border-radius: 25px;
+  background-color: hsl(from var(--element-bgColor) h s l / var(--button-bgColorAlpha));
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  & > svg {
+    width: 32px;
+    aspect-ratio: 1/1;
+  }
+}
+.card-button-large {
+  aspect-ratio: auto;
+  gap: 10px;
+}

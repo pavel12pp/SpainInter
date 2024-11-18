@@ -1,93 +1,56 @@
-.card-button {
-  display: flex;
-  height: 72px;
-  aspect-ratio: 1/1;
-  border-radius: 25px;
-  background: rgba(var(--bgColor), var(--button-bgColorAlpha));
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  & > svg {
-    display: block;
-    width: 32px;
-    aspect-ratio: 1/1;
-  }
-}
-.card-button-large {
-  aspect-ratio: auto;
-  gap: 10px;
-}
-.contact-form-button {
-  display: flex;  
-  width: 100%;
-  height: 50px;
-  border-radius: 15px;
-  background: var(--accent-secondaire-color);
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-family: var(--secondaire-fontFamily);
-  font-weight: 500;
-  font-size: 16px;
-  text-align: center;
-  cursor: pointer;
 
-}
-.contact-form-field {
-  display: flex;
-  height: 50px;
-  padding: 0px 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 15px;
-  background: #fff;
-  &__input {
-    display: block;
-    width: 100%;
-    flex-shrink: 1;
-    height: 100%;
-    border-radius: 15px;
-    &::placeholder {
-      font-family: var(--secondaire-fontFamily);
-      font-size: 13px;
-      color: #999;
-    }
-  }
-}
 
 
 $changeAdaptive-width: 1250px;
 $changeAdaptive-height: 600px;
-.card-image .card-image__open-addcontrols-open{
-  display: block;
+.card-focus .card-focus__open-auth{
+  display: flex;
 }
-.card-image .card-image__open-addcontrols-close{
+.card-focus .card-focus__open-profile{
   display: none;
 }
-.card-image.addcontrols-open .card-image__open-addcontrols-open{
+.card-focus.auth-active .card-focus__open-auth{
   display: none;
 }
-.card-image.addcontrols-open .card-image__open-addcontrols-close{
-  display: block;
+.card-focus.auth-active .card-focus__open-profile{
+  display: flex;
 }
 
-.card-image .card-image__open-auth{
-  display: flex;
+body.card-focus-active {
+  & .card-focus {
+    display: flex;
+  }
 }
-.card-image .card-image__open-profile{
-  display: none;
+body.addcontrols-active {
+  & .card-focus__addcontrols {
+    display: flex;
+  }
+  & .card-focus__open-addcontrols-open {
+    display: none;
+  }
+  & .card-focus__open-addcontrols-close {
+    display: block;
+  }
 }
-.card-image.auth-active .card-image__open-auth{
-  display: none;
+body.info-active {
+  & .card-focus-info {
+    display: flex;
+  }
 }
-.card-image.auth-active .card-image__open-profile{
-  display: flex;
+body.contact-active {
+  & .card-focus-contact {
+    display: grid;
+  }
 }
-.card-image {
-  --bgColor: 233, 233, 240;
-  --button-bgColorAlpha: 0.75;
-  --info-bgColorAlpha: 0.8;
+body.video-active {
+  overflow: hidden;
+  & .card-focus-video-slider {
+    display: flex;
+  }
+}
 
-  display: flex;
+.card-focus {
+  display: none;
   position: relative;
   overflow: hidden;
   height: 100vh;
@@ -144,13 +107,15 @@ $changeAdaptive-height: 600px;
   }
 
   &__open-addcontrols-open {
+    display: block;
   }
 
   &__open-addcontrols-close {
+    display: none;
   }
 
   &__addcontrols {
-    display: flex;
+    display: none;
     position: absolute;
     gap: 10px;
     bottom: 0px;
@@ -216,7 +181,7 @@ $changeAdaptive-height: 600px;
   &__video-slider {
   }
 }
-.card-image-slider {
+.card-focus-slider {
   position: absolute;
   z-index: -1;
   width: 100%;
@@ -241,13 +206,11 @@ $changeAdaptive-height: 600px;
     }
   }
 }
-// .card-image-slider__button-next {
-// }
-// .card-image-slider__button-prev {
-// }
-.card-image-info {
+.card-focus-info {
+  display: none;
   position: absolute;
   width: 100%;
+  flex-direction: column;
   bottom: calc(100% + 172px);
   right: 0px;
   cursor: auto;
@@ -258,8 +221,6 @@ $changeAdaptive-height: 600px;
     bottom: calc(100% + 20px);
   };
   @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
-    display: flex;
-    display: none;
     position: fixed;
     width: auto;
     height: 120px;
@@ -276,11 +237,11 @@ $changeAdaptive-height: 600px;
   &__data {
   }
 }
-.card-image-description {
+.card-focus-description {
   display: grid;
   padding: 30px;
   border-radius: 25px;
-  background: rgba(var(--bgColor), var(--info-bgColorAlpha));
+  background: hsl(from var(--element-bgColor) h s l / var(--info-bgColorAlpha));
   grid-template-columns: repeat(2, auto);
   row-gap: 10px;
   margin-bottom: 40px;
@@ -325,7 +286,7 @@ $changeAdaptive-height: 600px;
     };
   }
 }
-.card-image-data {
+.card-focus-data {
   display: flex;
   justify-content: space-between;
   @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
@@ -335,13 +296,13 @@ $changeAdaptive-height: 600px;
   &__point {
   }
 }
-.card-image-data-point {
+.card-focus-data-point {
   display: flex;
   width: 120px;
   aspect-ratio: 1/1;
   flex-direction: column;
   border-radius: 25px;
-  background: rgba(var(--bgColor), var(--info-bgColorAlpha));
+  background: hsl(from var(--element-bgColor) h s l / var(--info-bgColorAlpha));
   align-items: center;
   justify-content: center;
   &__icon {
@@ -355,8 +316,8 @@ $changeAdaptive-height: 600px;
   &__value {
   }
 }
-.card-image-contact {
-  display: grid;
+.card-focus-contact {
+  display: none;
   position: absolute;
   grid-template-columns: 210px;
   gap: 20px;
@@ -369,7 +330,6 @@ $changeAdaptive-height: 600px;
     left: -230px;
   };
   @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
-    display: grid;
     position: fixed;
     height: 150px;
     max-width: none;
@@ -416,12 +376,12 @@ $changeAdaptive-height: 600px;
     }
   }
 }
-.card-image-qrcode {
+.card-focus-qrcode {
   display: grid;
   grid-template-columns: 1fr;
   padding: 20px;
   border-radius: 25px;
-  background: rgba(var(--bgColor), var(--info-bgColorAlpha));
+  background: hsl(from var(--element-bgColor) h s l / var(--info-bgColorAlpha));
   row-gap: 15px;
   justify-items: center;
   &__supblock-one,&__supblock-two {
@@ -483,9 +443,9 @@ $changeAdaptive-height: 600px;
   &__button {
   }
 }
-.card-image-email {
+.card-focus-email {
   padding: 20px;
-  background: rgba(var(--bgColor), var(--info-bgColorAlpha));
+  background: hsl(from var(--element-bgColor) h s l / var(--info-bgColorAlpha));
   border-radius: 25px;
 
   &__field {
@@ -498,9 +458,9 @@ $changeAdaptive-height: 600px;
   &__button {
   }
 }
-.card-image-phone {
+.card-focus-phone {
   padding: 20px;
-  background: rgba(var(--bgColor), var(--info-bgColorAlpha));
+  background: hsl(from var(--element-bgColor) h s l / var(--info-bgColorAlpha));
   border-radius: 25px;
 
   &__field {
@@ -516,7 +476,7 @@ $changeAdaptive-height: 600px;
   &__button {
   }
 }
-.card-image-phone-field-select {
+.card-focus-phone-field-select {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -552,8 +512,8 @@ $changeAdaptive-height: 600px;
   }
 }
 
-.card-image-video-slider {
-  display: flex;
+.card-focus-video-slider {
+  display: none;
   position: fixed;
   width: 100vw;
   height: 100vh;

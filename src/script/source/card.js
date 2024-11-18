@@ -1,5 +1,8 @@
 import Swiper from "swiper";
 import {Navigation} from 'swiper/modules';
+
+import './../component/page/card/pseudoLogic.js';
+
 const profileSlider = new Swiper('.card-profiles-slider', {
   grabCursor: true,  
   loop: true,
@@ -36,24 +39,24 @@ const videoSlider = new Swiper('.card-videos-slider', {
   },
   slidesPerView: 1,
 });
-const cardImageSlider = new Swiper('.card-image-slider', {
+const cardImageSlider = new Swiper('.card-focus-slider', {
   loop: true,
   modules: [Navigation],
   allowTouchMove: false,
   navigation: {
-    nextEl: '.card-image-slider__button-next',
-    prevEl: '.card-image-slider__button-prev',
+    nextEl: '.card-focus-slider__button-next',
+    prevEl: '.card-focus-slider__button-prev',
   },
   slidesPerView: 1,
 });
 
-const cardImageVideoSlider = new Swiper('.card-image-video-slider__container', {
+const cardImageVideoSlider = new Swiper('.card-focus-video-slider__container', {
   loop: true,
   modules: [Navigation],
   allowTouchMove: false,
   navigation: {
-    nextEl: '.card-image-video-slider__button-next',
-    prevEl: '.card-image-video-slider__button-prev',
+    nextEl: '.card-focus-video-slider__button-next',
+    prevEl: '.card-focus-video-slider__button-prev',
   },
   slidesPerView: 1,
 });

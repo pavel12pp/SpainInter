@@ -1,7 +1,7 @@
 const config = {
   mode: "production",
   entry: {
-    index: "./src/script/source/index.js",
+    card: "./src/script/source/card.js",
   },
   output: {
     filename: "[name].js"
