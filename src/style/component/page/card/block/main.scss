@@ -114,6 +114,10 @@ body.card-focus-active {
         width: 100%;
         aspect-ratio: 1.74/1;
       }
+      @media (max-width: 650px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      };
 		}
 
 		&__videos {
@@ -125,6 +129,9 @@ body.card-focus-active {
 
 		&__map {
       grid-column: 2/3;
+      @media (max-width: 650px) {
+        grid-column: 1/2;
+      };
 
 		}
 
@@ -177,6 +184,9 @@ body.card-focus-active {
   border-radius: 25px;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 500px) {
+    width: calc(50% - 10px);
+  };
   &__icon {
     margin-bottom: 5px;
 

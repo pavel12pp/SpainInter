@@ -14,7 +14,7 @@ const profileSlider = new Swiper('.card-profiles-slider', {
     nextEl: '.card-profiles-slider-button-next',
     prevEl: '.card-profiles-slider-button-prev',
   },
-  slidesPerView: 3,
+  slidesPerView: 2,
   spaceBetween: 10,
   breakpoints: {
     1460: {
@@ -29,6 +29,9 @@ const profileSlider = new Swiper('.card-profiles-slider', {
     },
     750: {
       slidesPerView: 4,
+    },
+    600: {
+      slidesPerView: 2,
     },
   }
 });

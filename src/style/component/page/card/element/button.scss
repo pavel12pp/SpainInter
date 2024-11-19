@@ -17,3 +17,25 @@
   aspect-ratio: auto;
   gap: 10px;
 }
+@media (max-width: 1250px) or (max-height: 600px) {
+  .card-focus .card-button {
+  
+      height: 48px;
+      border-radius: 20px;
+      & > svg {
+        width: 24px;
+      }
+    
+  }
+}
+@media (max-width: 990px) {
+  .card .card-button {
+  
+      height: 48px;
+      border-radius: 20px;
+      & > svg {
+        width: 24px;
+      }
+    
+  }
+}

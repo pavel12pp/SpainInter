@@ -17,6 +17,12 @@ $changeAdaptive-height: 600px;
 }
 
 body.card-focus-active {
+  display: flex;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
   & .card-focus {
     display: flex;
   }
@@ -40,6 +46,9 @@ body.info-active {
 body.contact-active {
   & .card-focus-contact {
     display: grid;
+    @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
+      display: flex;
+    };
   }
 }
 body.video-active {
@@ -53,8 +62,8 @@ body.video-active {
   display: none;
   position: relative;
   overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  height: 100dvh;
+  width: 100dvw;
   align-items: center;
   justify-content: center;
   &__container {
@@ -121,6 +130,8 @@ body.video-active {
     bottom: 0px;
     left: 0px;
     @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
+      max-width: calc(100dvw - 40px - 48px - 10px);
+      flex-wrap: wrap;
       top: 0px;
       bottom: auto;
     };
@@ -159,6 +170,9 @@ body.video-active {
     & > span {
       font-size: 20px;
       font-weight: 500;
+      @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
+        font-size: 16px;
+      }
     }
     & > svg {
       width: 20px;
@@ -222,7 +236,9 @@ body.video-active {
   };
   @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
     position: fixed;
+    overflow-x: scroll;
     width: auto;
+    max-width: calc(100dvw - 40px);
     height: 120px;
     flex-direction: row-reverse;
     bottom: auto;
@@ -311,9 +327,13 @@ body.video-active {
 
   &__title {
     margin-bottom: 7px;
+    color: var(--primary-textColor);
+    font-size: 13px;
   }
 
   &__value {
+    color: var(--primary-textColor);
+    font-size: 13px;
   }
 }
 .card-focus-contact {
@@ -331,15 +351,16 @@ body.video-active {
   };
   @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
     position: fixed;
+    overflow-x: scroll;
     height: 150px;
-    max-width: none;
+    max-width: calc(100dvw - 40px);
     width: fit-content;
+    flex-direction: row-reverse;
     top: 50%;
+    right: auto;
     left: 20px;
     bottom: auto;
     translate: 0% -50%;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 150px;
   };
   &__qrcode {
     @media (max-height: 1000px) {
@@ -396,8 +417,9 @@ body.video-active {
     &__supblock-one {
       max-width: 106px;
     }
-    &__supblock-one {
+    &__supblock-two {
       max-width: 114px;
+      min-width: 110px;
     }
   }
   &__title {
@@ -578,6 +600,10 @@ body.video-active {
       top: 20px;
       right: 20px;
     };
+    @media (max-width: $changeAdaptive-width) or (max-height: $changeAdaptive-height) {
+      padding: 0px 15px;
+      font-size: 16px;
+    }
   }
 }
 
